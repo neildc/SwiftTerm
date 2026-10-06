@@ -39,10 +39,11 @@ extension UIColor {
                         alpha: fAlpha)
     }
 
+    // Terminal colours are read as Display P3, the way iTerm2 reads them by
+    // default, so the same numbers draw the same on a P3 screen.
     static func make (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> TTColor
     {
-        
-        return UIColor(red: red,
+        return UIColor(displayP3Red: red,
                        green: green,
                        blue: blue,
                        alpha: 1.0)
@@ -58,7 +59,7 @@ extension UIColor {
     
     static func make (color: Color) -> UIColor
     {
-        UIColor (red: CGFloat (color.red) / 65535.0,
+        UIColor (displayP3Red: CGFloat (color.red) / 65535.0,
                  green: CGFloat (color.green) / 65535.0,
                  blue: CGFloat (color.blue) / 65535.0,
                  alpha: 1.0)
